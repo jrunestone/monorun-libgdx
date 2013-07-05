@@ -1,0 +1,1 @@
+java -cp C:\projects\android\libgdx-0.9.8\gdx.jar;C:\projects\android\libgdx-0.9.8\extensions\gdx-tools\gdx-tools.jar com.badlogic.gdx.tools.imagepacker.TexturePacker2 unpacked . uiskin.atlas
