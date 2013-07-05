@@ -6,13 +6,11 @@ import se.bazookian.monorun.screens.StartScreen;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Monorun extends Game implements ApplicationListener {
-	public static final String[] PACK_ASSET_FOLDERS = { "sprites", "ui" };
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 480;
 	

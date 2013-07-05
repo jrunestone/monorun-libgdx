@@ -6,7 +6,7 @@ import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
 
 public class Main {
 	public static void main(String[] args) {
-		packAssets(Monorun.PACK_ASSET_FOLDERS);
+		packAssets(Resources.PACK_ASSET_FOLDERS);
 		
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		
