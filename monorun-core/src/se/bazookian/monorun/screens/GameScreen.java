@@ -4,21 +4,28 @@ import se.bazookian.monorun.ScreenManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public abstract class GameScreen implements Screen {
+	protected AssetManager assetManager;
 	protected ScreenManager screenManager;
 	protected Stage stage;
 	protected Color backgroundColor;
 	
-	public GameScreen(ScreenManager screenManager, boolean useStage) {
+	public GameScreen(ScreenManager screenManager, AssetManager assetManager, boolean useStage) {
 		if (screenManager == null) {
 			throw new IllegalArgumentException("Screen manager must not be null");
 		}
 		
+		if (assetManager == null) {
+			throw new IllegalArgumentException("Asset manager must not be null");
+		}
+		
 		this.screenManager = screenManager;
+		this.assetManager = assetManager;
 		
 		if (useStage) {
 			stage = new Stage(0, 0, true);
@@ -27,20 +34,9 @@ public abstract class GameScreen implements Screen {
 		backgroundColor = new Color(0.3f, 0.3f, 0.4f, 1.0f);
 	}
 	
-	protected ScreenManager getScreenManager() {
-		return screenManager;
-	}
-	
-	protected Color getBackgroundColor() {
-		return backgroundColor;
-	}
-	
-	protected void setBackgroundColor(float r, float g, float b, float a) {
-		backgroundColor.set(r, g, b, a);
-	}
-
-	protected Stage getStage() {
-		return stage;
+	public GameScreen(ScreenManager screenManager, AssetManager assetManager, boolean useStage, Color backgroundColor) {
+		this(screenManager, assetManager, useStage);
+		this.backgroundColor = backgroundColor;
 	}
 	
 	@Override
@@ -88,5 +84,17 @@ public abstract class GameScreen implements Screen {
 		if (stage != null) {
 			stage.dispose();
 		}
+	}
+
+	protected ScreenManager getScreenManager() {
+		return screenManager;
+	}
+
+	protected AssetManager getAssetManager() {
+		return assetManager;
+	}
+	
+	protected Stage getStage() {
+		return stage;
 	}
 }

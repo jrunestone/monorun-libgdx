@@ -6,14 +6,14 @@ import java.util.HashMap;
 
 import se.bazookian.monorun.screens.GameScreen;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 
 public class ScreenManager {
-	private Game game;
+	private Monorun game;
 	private HashMap<GameState, Screen> screens;
 	
-	public ScreenManager(Game game) {
+	public ScreenManager(Monorun game) {
 		if (game == null) {
 			throw new IllegalArgumentException("Game must not be null");
 		}
@@ -26,8 +26,8 @@ public class ScreenManager {
 		GameScreen screen = null;
 		
 		try {
-			Constructor<T> ctor = screenType.getConstructor(ScreenManager.class);
-			screen = ctor.newInstance(this);
+			Constructor<T> ctor = screenType.getConstructor(ScreenManager.class, AssetManager.class);
+			screen = ctor.newInstance(this, game.getAssetManager());
 		} catch (InstantiationException e) {
 			throw new IllegalArgumentException("Invalid screen type");
 		} catch (IllegalAccessException e) {
