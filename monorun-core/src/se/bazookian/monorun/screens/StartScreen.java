@@ -9,11 +9,12 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.parallel;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 import se.bazookian.monorun.GameState;
-import se.bazookian.monorun.Monorun;
+import se.bazookian.monorun.Resources;
 import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.ui.ActionButton;
 import se.bazookian.monorun.ui.ChangeScreenAction;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -64,7 +65,7 @@ public class StartScreen extends GameScreen {
 	}
 	
 	private void createLayout() {
-		Skin skin = Monorun.getDefaultSkin();
+		Skin skin = getAssetManager().get(Resources.UI_SKIN, Skin.class);
 		Table table = new Table(skin);
 
 		table.setFillParent(true);

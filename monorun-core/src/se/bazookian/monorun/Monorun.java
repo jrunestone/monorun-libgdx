@@ -1,7 +1,7 @@
 package se.bazookian.monorun;
 
-import se.bazookian.monorun.screens.GameplayScreen;
 import se.bazookian.monorun.screens.EndScreen;
+import se.bazookian.monorun.screens.GameplayScreen;
 import se.bazookian.monorun.screens.StartScreen;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -15,8 +15,6 @@ public class Monorun extends Game implements ApplicationListener {
 	public static final String[] PACK_ASSET_FOLDERS = { "sprites", "ui" };
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 480;
-		
-	private static Skin defaultSkin;
 	
 	private AssetManager assetManager;
 	private ScreenManager screenManager;
@@ -31,12 +29,10 @@ public class Monorun extends Game implements ApplicationListener {
 		init();
 	}
 	
-	public static Skin getDefaultSkin() {
-		if (defaultSkin == null) {
-			defaultSkin = new Skin(Gdx.files.internal("ui/ui.json"));
-		}
-		
-		return defaultSkin;
+	@Override
+	public void dispose() {
+		super.dispose();
+		assetManager.dispose();
 	}
 
 	public AssetManager getAssetManager() {
@@ -50,7 +46,9 @@ public class Monorun extends Game implements ApplicationListener {
 	}
 	
 	private void loadAssets() {
-		assetManager.load("sprites/sprites.atlas", TextureAtlas.class);
+		assetManager.load(Resources.UI_SKIN, Skin.class);
+		assetManager.finishLoading();
+		assetManager.load(Resources.SPRITE_ATLAS, TextureAtlas.class);
 	}
 	
 	private void init() {
