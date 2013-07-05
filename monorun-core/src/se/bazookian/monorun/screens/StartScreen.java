@@ -8,14 +8,12 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.parallel;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
-
 import se.bazookian.monorun.GameState;
 import se.bazookian.monorun.Monorun;
 import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.ui.ActionButton;
 import se.bazookian.monorun.ui.ChangeScreenAction;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -47,7 +45,7 @@ public class StartScreen extends GameScreen {
 		if (!assetsLoaded && getAssetManager().update()) {
 			assetsLoaded = true;
 			
-			startButton.addAction(sequence(delay(1.0f), run(new Runnable() {
+			startButton.addAction(sequence(delay(1), run(new Runnable() {
 				@Override
 				public void run() {
 					float x = startButton.getX();
@@ -55,6 +53,11 @@ public class StartScreen extends GameScreen {
 					
 					startButton.setY(y + 50);
 					startButton.addAction(parallel(moveTo(x, y, 1, exp10Out), fadeIn(1)));
+				}
+			}), delay(1), run(new Runnable() {
+				@Override
+				public void run() {
+					startButton.setDisabled(false);
 				}
 			})));
 		}
@@ -73,6 +76,7 @@ public class StartScreen extends GameScreen {
 		tagLine.setWrap(true);
 		
 		startButton = new ActionButton("stay positive!", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));				
+		startButton.setDisabled(true);
 		startButton.addAction(fadeOut(0));
 		
 		table.add(logo).spaceBottom(30);

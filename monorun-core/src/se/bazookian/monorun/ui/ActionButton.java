@@ -2,6 +2,7 @@ package se.bazookian.monorun.ui;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.color;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -14,6 +15,7 @@ public class ActionButton extends TextButton {
 	public static final Color OUT_COLOR = new Color(0.34f, 0.77f, 0.86f, 1); 
 	public static final Color OVER_COLOR = new Color(0.21f, 0.27f, 0.29f, 1); 
 
+	private boolean isMouseOver;
 	private UiAction action;
 	
 	public ActionButton(String text, Skin skin) {
@@ -26,12 +28,20 @@ public class ActionButton extends TextButton {
 		addListener(new InputListener() {
 			@Override
 			public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-				addAction(color(OVER_COLOR, 0.2f));
+				isMouseOver = true;
+				
+				if (!isDisabled()) {
+					addAction(color(OVER_COLOR, 0.2f));
+				}
 			}
 			
 			@Override
 			public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-				addAction(color(OUT_COLOR, 0.2f));
+				isMouseOver = false;
+				
+				if (!isDisabled()) {
+					addAction(color(OUT_COLOR, 0.2f));
+				}
 			}
 		});
 	}
@@ -53,7 +63,9 @@ public class ActionButton extends TextButton {
 			
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				action.execute();
+				if (isMouseOver) {
+					action.execute();
+				}
 			}
 		});
 	}
