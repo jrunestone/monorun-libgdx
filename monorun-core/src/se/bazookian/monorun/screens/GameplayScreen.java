@@ -1,12 +1,18 @@
 package se.bazookian.monorun.screens;
 
+import se.bazookian.monorun.ScreenManager;
+import se.bazookian.monorun.components.Position;
+import se.bazookian.monorun.components.Sprite;
+import se.bazookian.monorun.systems.SpriteRenderingSystem;
+
+import com.artemis.Entity;
+import com.artemis.World;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 
-import se.bazookian.monorun.ScreenManager;
-
 public class GameplayScreen extends GameScreen {
 	private static final Color BACKGROUND_COLOR = new Color(0.086f, 0.1f, 0.11f, 1);
+	private World world;
 	
 	public GameplayScreen(ScreenManager screenManager, AssetManager assetManager) {
 		super(screenManager, assetManager, false, BACKGROUND_COLOR);
@@ -14,6 +20,23 @@ public class GameplayScreen extends GameScreen {
 	
 	@Override
 	public void show() {
+		world = new World();
 		
+		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
+		
+		Entity player = world.createEntity();
+		player.addComponent(new Sprite("player"));
+		player.addComponent(new Position(400, 240));
+		world.addEntity(player);
+		
+		world.initialize();
+	}
+	
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+		
+		world.setDelta(delta);
+		world.process();
 	}
 }
