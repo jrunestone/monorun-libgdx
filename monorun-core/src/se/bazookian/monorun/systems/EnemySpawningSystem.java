@@ -10,19 +10,24 @@ import com.artemis.utils.Timer;
 import com.badlogic.gdx.math.MathUtils;
 
 public class EnemySpawningSystem extends VoidEntitySystem {
+	public static final float SPAWN_INTERVAL = 2;
+	public static final float MIN_VELOCITY_X = 200; 
+	public static final float MAX_VELOCITY_Y = 1000;
+	
 	private Timer spawnTimer;
 	
 	@Override
 	protected void initialize() {
 		super.initialize();
 		
-		spawnTimer = new Timer(2, true) {
+		spawnTimer = new Timer(SPAWN_INTERVAL, true) {
 			@Override
 			public void execute() {
 				Position position = new Position(0, Monorun.HEIGHT);
-				Velocity velocity = new Velocity(MathUtils.random(100, 1000), -MathUtils.random(100, 1000));
+				Velocity velocity = new Velocity(MathUtils.random(MIN_VELOCITY_X, MAX_VELOCITY_Y), -MathUtils.random(MIN_VELOCITY_X, MAX_VELOCITY_Y));
+				float scale = MathUtils.random(0, 1) == 0 ? 0.8f : 1;
 				
-				Enemy.create(world, position, velocity).addToWorld();
+				Enemy.create(world, position, velocity, scale).addToWorld();
 			}
 		}; 
 	}

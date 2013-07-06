@@ -63,7 +63,7 @@ public class SpriteRenderingSystem extends EntityProcessingSystem {
 		float centerX = position.x - region.getRegionWidth() / 2;
 		float centerY = position.y - region.getRegionHeight() / 2;
 		
-		spriteBatch.draw(region, centerX, centerY);
+		spriteBatch.draw(region, centerX, centerY, 0, 0, region.getRegionWidth(), region.getRegionHeight(), sprite.scale, sprite.scale, 0);
 	}
 	
 	@Override

@@ -12,11 +12,11 @@ import com.artemis.World;
 public class Enemy {
 	public static final String SPRITE_NAME = "enemy";
 	
-	public static Entity create(World world, Position position, Velocity velocity) {
+	public static Entity create(World world, Position position, Velocity velocity, float scale) {
 		Entity enemy = world.createEntity();
 		
 		enemy.addComponent(new se.bazookian.monorun.components.Enemy());
-		enemy.addComponent(new Sprite(SPRITE_NAME));
+		enemy.addComponent(new Sprite(SPRITE_NAME, scale));
 		enemy.addComponent(position);
 		enemy.addComponent(velocity);
 		enemy.addComponent(new Drag(1));
