@@ -1,11 +1,10 @@
 package se.bazookian.monorun.screens;
 
 import se.bazookian.monorun.ScreenManager;
-import se.bazookian.monorun.components.Position;
-import se.bazookian.monorun.components.Sprite;
+import se.bazookian.monorun.entities.Player;
+import se.bazookian.monorun.systems.PlayerInputSystem;
 import se.bazookian.monorun.systems.SpriteRenderingSystem;
 
-import com.artemis.Entity;
 import com.artemis.World;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
@@ -22,12 +21,10 @@ public class GameplayScreen extends GameScreen {
 	public void show() {
 		world = new World();
 		
+		world.setSystem(new PlayerInputSystem());
 		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		
-		Entity player = world.createEntity();
-		player.addComponent(new Sprite("player"));
-		player.addComponent(new Position(400, 240));
-		world.addEntity(player);
+		Player.create(world).addToWorld();
 		
 		world.initialize();
 	}
