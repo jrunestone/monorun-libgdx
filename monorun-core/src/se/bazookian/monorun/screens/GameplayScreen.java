@@ -2,6 +2,8 @@ package se.bazookian.monorun.screens;
 
 import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.entities.Player;
+import se.bazookian.monorun.systems.EnemySpawningSystem;
+import se.bazookian.monorun.systems.MovementSystem;
 import se.bazookian.monorun.systems.PlayerInputSystem;
 import se.bazookian.monorun.systems.SpriteRenderingSystem;
 
@@ -21,7 +23,9 @@ public class GameplayScreen extends GameScreen {
 	public void show() {
 		world = new World();
 		
+		world.setSystem(new EnemySpawningSystem());
 		world.setSystem(new PlayerInputSystem());
+		world.setSystem(new MovementSystem());
 		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		
 		Player.create(world).addToWorld();
