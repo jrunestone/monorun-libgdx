@@ -27,8 +27,8 @@ public class GameplayScreen extends GameScreen {
 		world.setSystem(new EnemySpawningSystem());
 		world.setSystem(new PlayerInputSystem());
 		world.setSystem(new RandomMovementSystem());
-		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		world.setSystem(new LinePairRenderingSystem());
+		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		
 		Player.create(world).addToWorld();
 		

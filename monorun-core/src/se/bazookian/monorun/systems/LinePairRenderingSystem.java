@@ -9,6 +9,9 @@ import com.artemis.Entity;
 import com.artemis.EntitySystem;
 import com.artemis.annotations.Mapper;
 import com.artemis.utils.ImmutableBag;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -18,10 +21,10 @@ public class LinePairRenderingSystem extends EntitySystem {
 	private ShapeRenderer shapeRenderer;
 	
 	public LinePairRenderingSystem() {
-		super(Aspect.getAspectForAll(Position.class, Enemy.class));
+		super(Aspect.getAspectForAll(Enemy.class, Position.class));
 		
 		shapeRenderer = new ShapeRenderer();
-		shapeRenderer.setColor(1, 1, 1, 1);
+		shapeRenderer.setColor(0.11f, 0.17f, 0.19f, 0.89f);
 	}
 	
 	@Override
@@ -32,6 +35,11 @@ public class LinePairRenderingSystem extends EntitySystem {
 	@Override
 	protected void begin() {
 		super.begin();
+		
+		Gdx.gl.glLineWidth(10);
+		Gdx.gl.glEnable(GL10.GL_BLEND);
+		Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		
 		shapeRenderer.begin(ShapeType.Line);
 	}
 	
@@ -59,6 +67,8 @@ public class LinePairRenderingSystem extends EntitySystem {
 	@Override
 	protected void end() {
 		super.end();
+		
 		shapeRenderer.end();
+		Gdx.gl.glDisable(GL10.GL_BLEND);
 	}
 }
