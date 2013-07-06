@@ -13,7 +13,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 
 public class GameplayScreen extends GameScreen {
-	private static final Color BACKGROUND_COLOR = new Color(0.086f, 0.1f, 0.11f, 1);
+	private static final Color BACKGROUND_COLOR = new Color(0.1f, 0.13f, 0.14f, 1);
 	private World world;
 	
 	public GameplayScreen(ScreenManager screenManager, AssetManager assetManager) {
