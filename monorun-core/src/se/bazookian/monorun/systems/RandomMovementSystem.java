@@ -10,7 +10,6 @@ import com.artemis.Entity;
 import com.artemis.annotations.Mapper;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.Utils;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 
 public class RandomMovementSystem extends EntityProcessingSystem {

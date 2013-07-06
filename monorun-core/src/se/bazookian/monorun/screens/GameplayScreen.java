@@ -2,6 +2,7 @@ package se.bazookian.monorun.screens;
 
 import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.entities.Player;
+import se.bazookian.monorun.systems.LinePairRenderingSystem;
 import se.bazookian.monorun.systems.RandomMovementSystem;
 import se.bazookian.monorun.systems.PlayerInputSystem;
 import se.bazookian.monorun.systems.SpriteRenderingSystem;
@@ -27,6 +28,7 @@ public class GameplayScreen extends GameScreen {
 		world.setSystem(new PlayerInputSystem());
 		world.setSystem(new RandomMovementSystem());
 		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
+		world.setSystem(new LinePairRenderingSystem());
 		
 		Player.create(world).addToWorld();
 		
