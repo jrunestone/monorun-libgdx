@@ -16,7 +16,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 
-public class RenderingSystem extends EntityProcessingSystem {
+public class SpriteRenderingSystem extends EntityProcessingSystem {
 	@Mapper ComponentMapper<Sprite> spriteMapper;
 	@Mapper ComponentMapper<Position> positionMapper;
 	
@@ -24,7 +24,7 @@ public class RenderingSystem extends EntityProcessingSystem {
 	private HashMap<String, AtlasRegion> regions;
 	private SpriteBatch spriteBatch;
 	
-	public RenderingSystem(AssetManager assetManager) {
+	public SpriteRenderingSystem(AssetManager assetManager) {
 		super(Aspect.getAspectForAll(Sprite.class, Position.class));
 		
 		if (assetManager == null) {

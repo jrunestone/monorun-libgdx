@@ -4,7 +4,7 @@ import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.entities.Player;
 import se.bazookian.monorun.systems.RandomMovementSystem;
 import se.bazookian.monorun.systems.PlayerInputSystem;
-import se.bazookian.monorun.systems.RenderingSystem;
+import se.bazookian.monorun.systems.SpriteRenderingSystem;
 import se.bazookian.monorun.systems.EnemySpawningSystem;
 
 import com.artemis.World;
@@ -26,7 +26,7 @@ public class GameplayScreen extends GameScreen {
 		world.setSystem(new EnemySpawningSystem());
 		world.setSystem(new PlayerInputSystem());
 		world.setSystem(new RandomMovementSystem());
-		world.setSystem(new RenderingSystem(getAssetManager()));
+		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		
 		Player.create(world).addToWorld();
 		
