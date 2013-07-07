@@ -4,10 +4,10 @@
 	<classpathentry kind="src" path="assets"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/monorun-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Projects/android/monorun-libgdx/monorun-core/lib/libgdx-0.9.8/gdx-backend-lwjgl.jar" sourcepath="libs/gdx-backend-lwjgl-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Projects/android/monorun-libgdx/monorun-core/lib/libgdx-0.9.8/gdx-backend-lwjgl-natives.jar"/>
-	<classpathentry kind="lib" path="C:/Projects/android/monorun-libgdx/monorun-core/lib/libgdx-0.9.8/gdx-natives.jar"/>
-	<classpathentry kind="lib" path="C:/Projects/android/monorun-libgdx/monorun-core/lib/libgdx-0.9.8/gdx-tools.jar"/>
-	<classpathentry kind="lib" path="C:/Projects/android/monorun-libgdx/monorun-core/lib/libgdx-0.9.8/gdx.jar"/>
+	<classpathentry kind="lib" path="C:/projects/android/monorun-libgdx/monorun-core/libs/libgdx-0.9.8/gdx-backend-lwjgl.jar" sourcepath="libs/gdx-backend-lwjgl-sources.jar"/>
+	<classpathentry kind="lib" path="C:/projects/android/monorun-libgdx/monorun-core/libs/libgdx-0.9.8/gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry kind="lib" path="C:/projects/android/monorun-libgdx/monorun-core/libs/libgdx-0.9.8/gdx-natives.jar"/>
+	<classpathentry kind="lib" path="C:/projects/android/monorun-libgdx/monorun-core/libs/libgdx-0.9.8/gdx-tools.jar"/>
+	<classpathentry kind="lib" path="C:/projects/android/monorun-libgdx/monorun-core/libs/libgdx-0.9.8/gdx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

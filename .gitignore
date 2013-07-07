@@ -5,5 +5,7 @@
 *.war
 *.ear
 
+*.so
+
 bin
 gen
