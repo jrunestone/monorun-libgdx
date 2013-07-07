@@ -1,6 +1,7 @@
 package se.bazookian.monorun.systems;
 
 import se.bazookian.monorun.Monorun;
+import se.bazookian.monorun.components.IdleTimer;
 import se.bazookian.monorun.components.Player;
 import se.bazookian.monorun.components.Position;
 
@@ -15,6 +16,7 @@ import com.badlogic.gdx.math.MathUtils;
 
 public class PlayerInputSystem extends EntityProcessingSystem implements InputProcessor {
 	@Mapper ComponentMapper<Position> positionMapper;
+	@Mapper ComponentMapper<IdleTimer> idleTimerMapper;
 	
 	private boolean isDragging;
 
@@ -22,7 +24,7 @@ public class PlayerInputSystem extends EntityProcessingSystem implements InputPr
 	private float dragY;
 	
 	public PlayerInputSystem() {
-		super(Aspect.getAspectForAll(Player.class, Position.class));
+		super(Aspect.getAspectForAll(Player.class, Position.class, IdleTimer.class));
 	}
 
 	@Override
@@ -34,11 +36,16 @@ public class PlayerInputSystem extends EntityProcessingSystem implements InputPr
 	@Override
 	protected void process(Entity entity) {
 		Position position = positionMapper.get(entity);
+		IdleTimer idleTimer = idleTimerMapper.get(entity);
 		
 		if (isDragging) {
+			idleTimer.reset();
+			
 			position.x = MathUtils.clamp(dragX, 0, Monorun.WIDTH);
 			position.y = MathUtils.clamp(dragY, 0, Monorun.HEIGHT);
 		}
+		
+		idleTimer.update();
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package se.bazookian.monorun.ui;
 import se.bazookian.monorun.GameState;
 import se.bazookian.monorun.ScreenManager;
 
-public class ChangeScreenAction implements UiAction {
+public class ChangeScreenAction implements UIAction {
 	private ScreenManager screenManager;
 	private GameState screenId;
 	

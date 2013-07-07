@@ -9,7 +9,7 @@ import com.artemis.utils.Timer;
 import com.badlogic.gdx.math.MathUtils;
 
 public class EnemySpawningSystem extends VoidEntitySystem {
-	public static final float SPAWN_INTERVAL = 2;
+	private static final float SPAWN_INTERVAL = 2;
 	private Timer spawnTimer;
 	
 	@Override

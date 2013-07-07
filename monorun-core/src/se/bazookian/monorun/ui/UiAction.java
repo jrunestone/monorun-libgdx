@@ -1,5 +1,5 @@
 package se.bazookian.monorun.ui;
 
-public interface UiAction {
+public interface UIAction {
 	public void execute();
 }

@@ -11,11 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
 public class ActionButton extends TextButton {
-	public static final Color OUT_COLOR = new Color(0.34f, 0.77f, 0.86f, 1); 
-	public static final Color OVER_COLOR = new Color(0.21f, 0.27f, 0.29f, 1); 
+	private static final Color OUT_COLOR = new Color(0.34f, 0.77f, 0.86f, 1); 
+	private static final Color OVER_COLOR = new Color(0.21f, 0.27f, 0.29f, 1); 
 
 	private boolean isOver;
-	private UiAction action;
+	private UIAction action;
 	
 	public ActionButton(String text, Skin skin) {
 		super(text, skin);
@@ -45,7 +45,7 @@ public class ActionButton extends TextButton {
 		});
 	}
 	
-	public ActionButton(String text, Skin skin, UiAction clickAction) {
+	public ActionButton(String text, Skin skin, UIAction clickAction) {
 		this(text, skin);
 		
 		if (clickAction == null) {

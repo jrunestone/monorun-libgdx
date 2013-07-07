@@ -2,13 +2,16 @@ package se.bazookian.monorun.screens;
 
 import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.entities.Player;
+import se.bazookian.monorun.systems.AISystem;
 import se.bazookian.monorun.systems.LinePairRenderingSystem;
-import se.bazookian.monorun.systems.RandomMovementSystem;
+import se.bazookian.monorun.systems.AutonomousMovementSystem;
 import se.bazookian.monorun.systems.PlayerInputSystem;
 import se.bazookian.monorun.systems.SpriteRenderingSystem;
 import se.bazookian.monorun.systems.EnemySpawningSystem;
 
+import com.artemis.Entity;
 import com.artemis.World;
+import com.artemis.managers.TagManager;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 
@@ -24,13 +27,18 @@ public class GameplayScreen extends GameScreen {
 	public void show() {
 		world = new World();
 		
+		TagManager tagManager = world.setManager(new TagManager());
+		
 		world.setSystem(new EnemySpawningSystem());
 		world.setSystem(new PlayerInputSystem());
-		world.setSystem(new RandomMovementSystem());
+		world.setSystem(new AISystem());
+		world.setSystem(new AutonomousMovementSystem());
 		world.setSystem(new LinePairRenderingSystem());
 		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		
-		Player.create(world).addToWorld();
+		Entity player = Player.create(world);
+		player.addToWorld();
+		tagManager.register(Player.TAG_NAME, player);
 		
 		world.initialize();
 	}
