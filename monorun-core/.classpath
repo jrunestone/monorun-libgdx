@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="libs/gdx.jar" sourcepath="libs/gdx-sources.jar"/>
-	<classpathentry kind="lib" path="libs/artemis.jar"/>
+	<classpathentry kind="lib" path="C:/Projects/android/monorun-libgdx/monorun-core/lib/libgdx-0.9.8/gdx.jar" sourcepath="libs/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Projects/android/monorun-libgdx/monorun-core/lib/artemis-120920/artemis.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
