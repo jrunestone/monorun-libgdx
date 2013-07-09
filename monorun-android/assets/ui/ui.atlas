@@ -5,16 +5,39 @@ filter: Nearest,Nearest
 repeat: none
 monorun-logo
   rotate: false
-  xy: 1, 11
+  xy: 1, 16
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 base-button
   rotate: false
-  xy: 1, 1
+  xy: 1, 6
   size: 8, 8
   split: 1, 1, 1, 1
   orig: 8, 8
+  offset: 0, 0
+  index: -1
+textfield-bg
+  rotate: false
+  xy: 131, 139
+  size: 5, 5
+  split: 1, 1, 1, 1
+  orig: 5, 5
+  offset: 0, 0
+  index: -1
+textfield-cursor
+  rotate: false
+  xy: 1, 1
+  size: 3, 3
+  split: 1, 1, 1, 1
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+textfield-selection
+  rotate: false
+  xy: 11, 13
+  size: 1, 1
+  orig: 1, 1
   offset: 0, 0
   index: -1

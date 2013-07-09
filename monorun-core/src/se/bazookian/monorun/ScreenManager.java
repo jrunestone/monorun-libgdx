@@ -62,4 +62,10 @@ public class ScreenManager {
 	public Screen getCurrentScreen() {
 		return game.getScreen();
 	}
+	
+	public void dispose() {
+		for (Screen screen : screens.values()) {
+			screen.dispose();
+		}
+	}
 }

@@ -65,8 +65,8 @@ public class StartScreen extends GameScreen {
 	
 	private void createLayout() {
 		Skin skin = getAssetManager().get(Resources.UI_SKIN, Skin.class);
+		
 		Table table = new Table(skin);
-
 		table.setFillParent(true);
 		
 		Image logo = new Image(skin, "monorun-logo");

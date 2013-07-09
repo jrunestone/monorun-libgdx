@@ -1,18 +1,25 @@
 {
 	com.badlogic.gdx.graphics.g2d.BitmapFont: {
-		default-font: { file: consolas.fnt } 
+		default-font: { file: consolas.fnt },
+		default-font-big: { file: consolas-big.fnt }  
 	},
 	
 	com.badlogic.gdx.graphics.Color: {
 		black: { a: 1, b: 0, g: 0, r: 0 },
 		white: { a: 1, b: 1, g: 1, r: 1 },
-		text-color: { a: 1, b: 0.23, g: 0.21, r: 0.16 }
+		text-color: { a: 1, b: 0.23, g: 0.21, r: 0.16 },
+		heading-color:{ a: 1, b: 0.86, g: 0.77, r: 0.34 } 
 	},
 	
 	com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 		default: { 
 			font: default-font, 
 			fontColor: text-color 
+		},
+		
+		heading: {
+			font: default-font-big,
+			fontColor: heading-color
 		}
 	},
 	
@@ -22,5 +29,15 @@
                 fontColor: white,
                 up: base-button
         }
+	},
+	
+	com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
+		default: {
+			font: default-font,
+			fontColor: heading-color,
+			selection: textfield-selection,
+			cursor: textfield-cursor,
+			background: textfield-bg
+		}
 	}
 }

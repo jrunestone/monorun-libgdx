@@ -30,6 +30,8 @@ public class Monorun extends Game implements ApplicationListener {
 	@Override
 	public void dispose() {
 		super.dispose();
+		
+		screenManager.dispose();
 		assetManager.dispose();
 	}
 
