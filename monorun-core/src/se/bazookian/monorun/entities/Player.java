@@ -2,6 +2,7 @@ package se.bazookian.monorun.entities;
 
 import se.bazookian.monorun.Monorun;
 import se.bazookian.monorun.components.Bounds;
+import se.bazookian.monorun.components.Health;
 import se.bazookian.monorun.components.IdleTimer;
 import se.bazookian.monorun.components.Position;
 import se.bazookian.monorun.components.Sprite;
@@ -21,6 +22,7 @@ public class Player {
 		player.addComponent(new Position(Monorun.WIDTH / 2, Monorun.HEIGHT / 2));
 		player.addComponent(new Bounds(36));
 		player.addComponent(new IdleTimer());
+		player.addComponent(new Health());
 		
 		return player;
 	}

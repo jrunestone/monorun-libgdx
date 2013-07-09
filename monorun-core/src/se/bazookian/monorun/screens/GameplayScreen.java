@@ -7,6 +7,7 @@ import se.bazookian.monorun.systems.CollisionSystem;
 import se.bazookian.monorun.systems.LinePairRenderingSystem;
 import se.bazookian.monorun.systems.AutonomousMovementSystem;
 import se.bazookian.monorun.systems.PlayerInputSystem;
+import se.bazookian.monorun.systems.ScoreSystem;
 import se.bazookian.monorun.systems.SpriteRenderingSystem;
 import se.bazookian.monorun.systems.EnemySpawningSystem;
 
@@ -35,6 +36,7 @@ public class GameplayScreen extends GameScreen {
 		world.setSystem(new AISystem());
 		world.setSystem(new AutonomousMovementSystem());
 		world.setSystem(new CollisionSystem());
+		world.setSystem(new ScoreSystem());
 		world.setSystem(new LinePairRenderingSystem());
 		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		
