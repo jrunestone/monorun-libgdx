@@ -36,7 +36,7 @@ public class GameplayScreen extends GameScreen {
 		world.setSystem(new AISystem());
 		world.setSystem(new AutonomousMovementSystem());
 		world.setSystem(new CollisionSystem());
-		world.setSystem(new ScoreSystem());
+		world.setSystem(new ScoreSystem(screenManager));
 		world.setSystem(new LinePairRenderingSystem());
 		world.setSystem(new SpriteRenderingSystem(getAssetManager()));
 		
