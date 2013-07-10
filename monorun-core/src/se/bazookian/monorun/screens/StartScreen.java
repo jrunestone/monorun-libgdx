@@ -70,10 +70,15 @@ public class StartScreen extends GameScreen {
 		table.setFillParent(true);
 		
 		Image logo = new Image(skin, "monorun-logo");
+		Image divider = new Image(skin, "divider");
 		
 		Label tagLine = new Label("Monorun! is a minimalistic game about the transience of life. As the nucleus of an atom, it's your purpose to stay positive for as long as you can. Avoid those negative electrons.", skin);
 		tagLine.setAlignment(Align.center);
 		tagLine.setWrap(true);
+		
+		Label authorInfo = new Label("Monorun! is a game developed by Benjamin Horn and designed by Carlos Eriksson and ported by Johan Johansson.\n\nThe source code for Monorun! is available on GitHub.\n\nhttps://github.com/beije/monorun\nhttps://github.com/swemaniac/monorun-libgdx", skin, "small");
+		authorInfo.setAlignment(Align.center);
+		authorInfo.setWrap(true);
 		
 		startButton = new ActionButton("stay positive!", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));				
 		startButton.setDisabled(true);
@@ -83,7 +88,11 @@ public class StartScreen extends GameScreen {
 		table.row();
 		table.add(tagLine).width(400).spaceBottom(30);
 		table.row();
-		table.add(startButton);
+		table.add(startButton).spaceBottom(30);
+		table.row();
+		table.add(divider).spaceBottom(30);
+		table.row();
+		table.add(authorInfo).width(400).spaceBottom(30);
 		
 		getStage().addActor(table);
 	}

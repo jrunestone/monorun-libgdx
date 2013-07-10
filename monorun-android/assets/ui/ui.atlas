@@ -3,6 +3,13 @@ ui.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+divider
+  rotate: false
+  xy: 1, 146
+  size: 415, 1
+  orig: 415, 1
+  offset: 0, 0
+  index: -1
 monorun-logo
   rotate: false
   xy: 1, 16
@@ -36,7 +43,7 @@ textfield-cursor
   index: -1
 textfield-selection
   rotate: false
-  xy: 11, 13
+  xy: 418, 146
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
