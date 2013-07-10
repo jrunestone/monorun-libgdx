@@ -17,6 +17,8 @@ import com.badlogic.gdx.math.MathUtils;
 public class AutonomousMovementSystem extends EntityProcessingSystem {
 	@Mapper ComponentMapper<Position> positionMapper;
 	@Mapper ComponentMapper<AutonomousMovement> movementMapper;
+
+	private static final float MOVEMENT_THRESHOLD = 20;
 	
 	public AutonomousMovementSystem() {
 		super(Aspect.getAspectForAll(Position.class, AutonomousMovement.class));
@@ -27,7 +29,7 @@ public class AutonomousMovementSystem extends EntityProcessingSystem {
 		Position position = positionMapper.get(entity);
 		AutonomousMovement movement = movementMapper.get(entity);
 
-		if (Utils.distance(position.x, position.y, movement.next.x, movement.next.y) < 5) {
+		if (Utils.distance(position.x, position.y, movement.next.x, movement.next.y) < MOVEMENT_THRESHOLD) {
 			resetMovement(position, movement);
 		}
 		
