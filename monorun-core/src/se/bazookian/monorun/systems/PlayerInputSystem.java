@@ -19,7 +19,7 @@ public class PlayerInputSystem extends EntityProcessingSystem implements InputPr
 	@Mapper ComponentMapper<IdleTimer> idleTimerMapper;
 	
 	private boolean isDragging;
-
+	
 	private float dragX;
 	private float dragY;
 	
@@ -38,14 +38,18 @@ public class PlayerInputSystem extends EntityProcessingSystem implements InputPr
 		Position position = positionMapper.get(entity);
 		IdleTimer idleTimer = idleTimerMapper.get(entity);
 		
-		if (isDragging) {
+		boolean isMoving = position.x != dragX && position.y != dragY;
+		
+		if (isMoving) {
 			idleTimer.reset();
-			
-			position.x = MathUtils.clamp(dragX, 0, Monorun.WIDTH);
-			position.y = MathUtils.clamp(dragY, 0, Monorun.HEIGHT);
 		}
 		
 		idleTimer.update();
+		
+		if (isDragging) {
+			position.x = MathUtils.clamp(dragX, 0, Monorun.WIDTH);
+			position.y = MathUtils.clamp(dragY, 0, Monorun.HEIGHT);
+		}
 	}
 
 	@Override

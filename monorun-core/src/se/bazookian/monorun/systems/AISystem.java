@@ -19,7 +19,7 @@ public class AISystem extends EntitySystem {
 	@Mapper ComponentMapper<AutonomousMovement> movementMapper;
 	@Mapper ComponentMapper<Position> positionMapper;
 	
-	private static final float IDLE_TIMEOUT = 2000;
+	private static final float IDLE_TIMEOUT = 500;
 	private IdleTimer playerIdleTimer;
 	
 	public AISystem() {
@@ -41,7 +41,7 @@ public class AISystem extends EntitySystem {
 
 	@Override
 	protected void processEntities(ImmutableBag<Entity> entities) {
-		if (playerIdleTimer.milliseconds < IDLE_TIMEOUT) {
+		if (entities.size() < 2 || playerIdleTimer.milliseconds < IDLE_TIMEOUT) {
 			return;
 		}
 		
