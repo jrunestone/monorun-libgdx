@@ -51,7 +51,7 @@ public class EndScreen extends GameScreen {
 		heading.setAlignment(Align.center);
 		
 		int elapsedMs = Math.round(elapsedTime * 1000.0f);
-		int halfLife = 3;
+		int halfLife = Math.round(elapsedTime);
 		
 		Label text1 = new Label("You stayed positive for " + elapsedMs + "ms which gives your high score a half-life of " + halfLife + "h.", skin);
 		text1.setWrap(true);
