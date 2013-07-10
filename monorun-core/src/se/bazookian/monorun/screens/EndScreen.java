@@ -8,9 +8,11 @@ import se.bazookian.monorun.ui.ChangeScreenAction;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
@@ -64,7 +66,7 @@ public class EndScreen extends GameScreen {
 		TextField nameField = new TextField("Dirk Diggler", skin);
 
 		retryButton = new ActionButton("retry", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
-//		highScoreButton = new ActionButton("view high score!", skin, new ChangeScreenAction(getScreenManager(), GameState.HIGHSCORE));	
+		highScoreButton = new ActionButton("view high score!", skin, new ChangeScreenAction(getScreenManager(), GameState.HIGHSCORE));	
 		
 		table.add(heading).spaceBottom(30);
 		table.row();
@@ -75,6 +77,8 @@ public class EndScreen extends GameScreen {
 		table.add(nameField).width(242).height(32).padLeft(10).spaceBottom(30);
 		table.row();
 		table.add(retryButton);
+		table.row();
+		table.add(highScoreButton);
 		
 		getStage().addActor(table);
 	}

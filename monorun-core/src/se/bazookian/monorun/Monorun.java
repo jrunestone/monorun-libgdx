@@ -2,6 +2,7 @@ package se.bazookian.monorun;
 
 import se.bazookian.monorun.screens.EndScreen;
 import se.bazookian.monorun.screens.GameplayScreen;
+import se.bazookian.monorun.screens.HighScoreScreen;
 import se.bazookian.monorun.screens.StartScreen;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -43,6 +44,7 @@ public class Monorun extends Game implements ApplicationListener {
 		screenManager.addScreen(GameState.START, StartScreen.class);
 		screenManager.addScreen(GameState.GAMEPLAY, GameplayScreen.class);
 		screenManager.addScreen(GameState.END, EndScreen.class);
+		screenManager.addScreen(GameState.HIGHSCORE, HighScoreScreen.class);
 	}
 	
 	private void loadAssets() {
