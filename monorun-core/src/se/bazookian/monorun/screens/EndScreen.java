@@ -8,11 +8,9 @@ import se.bazookian.monorun.ui.ChangeScreenAction;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
@@ -41,11 +39,6 @@ public class EndScreen extends GameScreen {
 	@Override
 	public void hide() {
 		stage.clear();
-	}
-	
-	@Override
-	public void render(float delta) {
-		super.render(delta);
 	}
 	
 	private void createLayout() {
@@ -79,7 +72,12 @@ public class EndScreen extends GameScreen {
 		table.row();
 		table.add(text2).width(400).spaceBottom(30).colspan(2);
 		table.row();
-		table.add(nameField).width(242).height(32).padLeft(10).spaceBottom(30).colspan(2);
+		
+		Table textFieldWrapper = new Table(skin);
+		textFieldWrapper.add(nameField).width(242).pad(7, 10, 7, 10);
+		textFieldWrapper.setBackground("textfield-bg");
+		table.add(textFieldWrapper).spaceBottom(30).colspan(2);
+		
 		table.row();
 		table.add(retryButton).align(Align.right);
 		table.add(highScoreButton).align(Align.left).spaceLeft(10);

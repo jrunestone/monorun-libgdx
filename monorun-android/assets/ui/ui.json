@@ -42,8 +42,7 @@
 			font: default-font,
 			fontColor: heading-color,
 			selection: textfield-selection,
-			cursor: textfield-cursor,
-			background: textfield-bg
+			cursor: textfield-cursor
 		}
 	}
 }
