@@ -43,6 +43,11 @@ public class EndScreen extends GameScreen {
 		stage.clear();
 	}
 	
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+	}
+	
 	private void createLayout() {
 		Skin skin = getAssetManager().get(Resources.UI_SKIN, Skin.class);
 		
@@ -64,21 +69,20 @@ public class EndScreen extends GameScreen {
 		text2.setAlignment(Align.center);
 		
 		TextField nameField = new TextField("Dirk Diggler", skin);
-
+		
 		retryButton = new ActionButton("retry", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
 		highScoreButton = new ActionButton("view high score!", skin, new ChangeScreenAction(getScreenManager(), GameState.HIGHSCORE));	
 		
-		table.add(heading).spaceBottom(30);
+		table.add(heading).spaceBottom(30).colspan(2);
 		table.row();
-		table.add(text1).width(400).spaceBottom(30);
+		table.add(text1).width(400).spaceBottom(30).colspan(2);
 		table.row();
-		table.add(text2).width(400).spaceBottom(30);
+		table.add(text2).width(400).spaceBottom(30).colspan(2);
 		table.row();
-		table.add(nameField).width(242).height(32).padLeft(10).spaceBottom(30);
+		table.add(nameField).width(242).height(32).padLeft(10).spaceBottom(30).colspan(2);
 		table.row();
-		table.add(retryButton);
-		table.row();
-		table.add(highScoreButton);
+		table.add(retryButton).align(Align.right);
+		table.add(highScoreButton).align(Align.left).spaceLeft(10);
 		
 		getStage().addActor(table);
 	}
