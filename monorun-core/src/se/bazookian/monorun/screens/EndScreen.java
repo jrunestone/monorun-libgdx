@@ -64,7 +64,7 @@ public class EndScreen extends GameScreen {
 		TextField nameField = new TextField("Dirk Diggler", skin);
 		
 		retryButton = new ActionButton("retry", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
-		highScoreButton = new ActionButton("view high score!", skin, new ChangeScreenAction(getScreenManager(), GameState.HIGHSCORE));	
+		highScoreButton = new ActionButton("claim high score!", skin, new ChangeScreenAction(getScreenManager(), GameState.HIGHSCORE));	
 		
 		table.add(heading).spaceBottom(30).colspan(2);
 		table.row();
