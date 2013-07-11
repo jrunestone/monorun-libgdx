@@ -76,7 +76,7 @@ public class StartScreen extends GameScreen {
 		tagLine.setAlignment(Align.center);
 		tagLine.setWrap(true);
 		
-		Label authorInfo = new Label("Monorun! is a game developed by Benjamin Horn and designed by Carlos Eriksson and ported by Johan Johansson.\n\nThe source code for Monorun! is available on GitHub.\nhttps://github.com/beije/monorun\nhttps://github.com/swemaniac/monorun-libgdx", skin, "small");
+		Label authorInfo = new Label("Monorun! is a game developed by Benjamin Horn and designed by Carlos Eriksson and ported by Johan Johansson.\n\nhttps://github.com/beije/monorun\nhttps://github.com/swemaniac/monorun-libgdx", skin, "small");
 		authorInfo.setAlignment(Align.center);
 		authorInfo.setWrap(true);
 		

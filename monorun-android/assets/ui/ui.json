@@ -1,8 +1,9 @@
 {
 	com.badlogic.gdx.graphics.g2d.BitmapFont: {
 		default-font: { file: consolas.fnt },
+		default-font-bold: { file: consolas-bold.fnt },
 		default-font-big: { file: consolas-big.fnt },
-		default-font-small: { file: consolas-small.fnt } 
+		default-font-small: { file: consolas-small.fnt }
 	},
 	
 	com.badlogic.gdx.graphics.Color: {
@@ -25,6 +26,11 @@
 		
 		small: {
 			font: default-font-small,
+			fontColor: text-color
+		},
+		
+		table-heading: {
+			font: default-font-bold,
 			fontColor: text-color
 		}
 	},
