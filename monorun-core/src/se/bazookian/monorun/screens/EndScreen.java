@@ -1,10 +1,12 @@
 package se.bazookian.monorun.screens;
 
 import se.bazookian.monorun.GameState;
+import se.bazookian.monorun.Monorun;
 import se.bazookian.monorun.Resources;
 import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.ui.ActionButton;
 import se.bazookian.monorun.ui.ChangeScreenAction;
+import se.bazookian.monorun.ui.UIAction;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
@@ -64,7 +66,15 @@ public class EndScreen extends GameScreen {
 		TextField nameField = new TextField("Dirk Diggler", skin);
 		
 		retryButton = new ActionButton("retry", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
-		highScoreButton = new ActionButton("claim high score!", skin, new ChangeScreenAction(getScreenManager(), GameState.HIGHSCORE));	
+		
+		highScoreButton = new ActionButton("claim high score!", skin, new UIAction() {
+			@Override
+			public void execute() {
+				HighScoreScreen screen = (HighScoreScreen)screenManager.getScreen(GameState.HIGHSCORE);
+				screen.setScore(Math.round(elapsedTime));
+				screenManager.setScreen(GameState.HIGHSCORE);
+			}
+		});	
 		
 		table.add(heading).spaceBottom(30).colspan(2);
 		table.row();
