@@ -5,9 +5,9 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/monorun-core"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar"/>
-	<classpathentry exported="true" kind="lib" path="/monorun-core/libs/gdx.jar"/>
-	<classpathentry exported="true" kind="lib" path="/monorun-core/libs/artemis.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="/monorun-core/lib/artemis-120920/artemis.jar"/>
+	<classpathentry kind="lib" path="/monorun-core/lib/libgdx-0.9.8/gdx-backend-android.jar"/>
+	<classpathentry kind="lib" path="/monorun-core/lib/libgdx-0.9.8/gdx.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
