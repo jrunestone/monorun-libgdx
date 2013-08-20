@@ -8,6 +8,7 @@ import se.bazookian.monorun.screens.StartScreen;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -50,7 +51,9 @@ public class Monorun extends Game implements ApplicationListener {
 	private void loadAssets() {
 		assetManager.load(Resources.UI_SKIN, Skin.class);
 		assetManager.finishLoading();
+		
 		assetManager.load(Resources.SPRITE_ATLAS, TextureAtlas.class);
+		assetManager.load(Resources.SPAWN_SOUND, Sound.class);
 	}
 	
 	private void init() {

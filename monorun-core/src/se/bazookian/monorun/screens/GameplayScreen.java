@@ -31,7 +31,7 @@ public class GameplayScreen extends GameScreen {
 		
 		TagManager tagManager = world.setManager(new TagManager());
 		
-		world.setSystem(new EnemySpawningSystem());
+		world.setSystem(new EnemySpawningSystem(getAssetManager()));
 		world.setSystem(new PlayerInputSystem());
 		world.setSystem(new AISystem());
 		world.setSystem(new AutonomousMovementSystem());
