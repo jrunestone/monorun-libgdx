@@ -3,8 +3,11 @@ package se.bazookian.monorun.screens;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import se.bazookian.monorun.GameState;
 import se.bazookian.monorun.Resources;
 import se.bazookian.monorun.ScreenManager;
+import se.bazookian.monorun.ui.ActionButton;
+import se.bazookian.monorun.ui.ChangeScreenAction;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.HttpParametersUtils;
@@ -74,10 +77,25 @@ public class HighScoreScreen extends GameScreen implements HttpResponseListener 
 		
 		table.add(heading).spaceBottom(30).colspan(3);
 		table.row();
+		
 		table.add(loadingLabel).colspan(3);
 		table.row();
 		
 		getStage().addActor(table);
+	}
+	
+	private void createBottomLayout() {
+		Skin skin = getAssetManager().get(Resources.UI_SKIN, Skin.class);
+		
+		Label text = new Label("Like everything in life, your high score will decay with time. Enjoy it while it lasts.", skin);
+		text.setWrap(true);
+		text.setAlignment(Align.center);
+		
+		table.add(text).width(400).spaceTop(30).spaceBottom(30).colspan(3);
+		table.row();
+		
+		ActionButton retryButton = new ActionButton("stay positive!", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
+		table.add(retryButton).colspan(3);
 	}
 	
 	private void createScoreLayout(ArrayList<HighScore> scores) {
@@ -113,7 +131,8 @@ public class HighScoreScreen extends GameScreen implements HttpResponseListener 
 			table.add(rank).width(125);
 			table.add(name).width(167);
 			table.add(hours).width(125);
-			table.row();
+			
+			table.row().spaceTop(5);
 		}
 	}
 	
@@ -154,10 +173,12 @@ public class HighScoreScreen extends GameScreen implements HttpResponseListener 
 		}
 		
 		createScoreLayout(scores);
+		createBottomLayout();
 	}
 	
 	@Override
 	public void failed(Throwable error) {
 		createFailLayout();
+		createBottomLayout();
 	}
 }
