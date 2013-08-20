@@ -39,6 +39,14 @@ public class StartScreen extends GameScreen {
 	}
 	
 	@Override
+	public void hide() {
+		super.hide();
+		
+		stage.clear();
+		assetsLoaded = false;
+	}
+	
+	@Override
 	public void render(float delta) {
 		super.render(delta);
 		

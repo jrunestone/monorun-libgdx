@@ -88,7 +88,7 @@ public class HighScoreScreen extends GameScreen implements ScoreListener {
 		table.add(text).width(400).spaceTop(30).spaceBottom(30).colspan(3);
 		table.row();
 		
-		ActionButton retryButton = new ActionButton("stay positive!", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
+		ActionButton retryButton = new ActionButton("stay positive!", skin, new ChangeScreenAction(getScreenManager(), GameState.START));
 		table.add(retryButton).spaceBottom(30).colspan(3);
 		table.row();
 		
