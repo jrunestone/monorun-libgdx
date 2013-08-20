@@ -7,6 +7,7 @@ import se.bazookian.monorun.ui.ActionButton;
 import se.bazookian.monorun.ui.ChangeScreenAction;
 import se.bazookian.monorun.ui.UIAction;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -17,6 +18,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
 public class EndScreen extends GameScreen {
 	private static final Color BACKGROUND_COLOR = new Color(1, 1, 1, 1);	
+	
+	private TextField nameField;
 	private float elapsedTime;
 	
 	public EndScreen(ScreenManager screenManager, AssetManager assetManager) {
@@ -58,15 +61,17 @@ public class EndScreen extends GameScreen {
 		text2.setWrap(true);
 		text2.setAlignment(Align.center);
 		
-		TextField nameField = new TextField("Dirk Diggler", skin);
-		
+		nameField = new TextField("Dirk Diggler", skin);
 		ActionButton retryButton = new ActionButton("retry", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
 		
 		ActionButton highScoreButton = new ActionButton("claim high score!", skin, new UIAction() {
 			@Override
 			public void execute() {
 				HighScoreScreen screen = (HighScoreScreen)screenManager.getScreen(GameState.HIGHSCORE);
-				screen.setScore(Math.round(elapsedTime));
+				
+				screen.setUsername(nameField.getText());
+				screen.setScore(Math.round(elapsedTime * 1000.0f));
+				
 				screenManager.setScreen(GameState.HIGHSCORE);
 			}
 		});	

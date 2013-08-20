@@ -1,7 +1,12 @@
 package se.bazookian.monorun.screens;
 
+import java.util.ArrayList;
+
 import se.bazookian.monorun.ScreenManager;
 import se.bazookian.monorun.entities.Player;
+import se.bazookian.monorun.services.ScoreService;
+import se.bazookian.monorun.services.ScoreService.HighScore;
+import se.bazookian.monorun.services.ScoreService.ScoreListener;
 import se.bazookian.monorun.systems.AISystem;
 import se.bazookian.monorun.systems.CollisionSystem;
 import se.bazookian.monorun.systems.LinePairRenderingSystem;
@@ -17,9 +22,11 @@ import com.artemis.managers.TagManager;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 
-public class GameplayScreen extends GameScreen {
+public class GameplayScreen extends GameScreen implements ScoreListener {
 	private static final Color BACKGROUND_COLOR = new Color(0.1f, 0.13f, 0.14f, 1);
+	
 	private World world;
+	private ScoreService scoreService;
 	
 	public GameplayScreen(ScreenManager screenManager, AssetManager assetManager) {
 		super(screenManager, assetManager, false, BACKGROUND_COLOR);
@@ -28,6 +35,7 @@ public class GameplayScreen extends GameScreen {
 	@Override
 	public void show() {
 		world = new World();
+		scoreService = new ScoreService(this);
 		
 		TagManager tagManager = world.setManager(new TagManager());
 		
@@ -45,6 +53,7 @@ public class GameplayScreen extends GameScreen {
 		tagManager.register(Player.TAG_NAME, player);
 		
 		world.initialize();
+		scoreService.startSession();
 	}
 	
 	@Override
@@ -53,5 +62,35 @@ public class GameplayScreen extends GameScreen {
 		
 		world.setDelta(delta);
 		world.process();
+	}
+
+	@Override
+	public void scoresReceived(ArrayList<HighScore> scores) {
+		
+	}
+
+	@Override
+	public void fetchScoresFailure(Throwable error) {
+		
+	}
+
+	@Override
+	public void sessionStarted() {
+		
+	}
+
+	@Override
+	public void startSessionFailure(Throwable error) {
+		
+	}
+
+	@Override
+	public void sessionEnded() {
+	
+	}
+
+	@Override
+	public void endSessionFailure(Throwable error) {
+		
 	}
 }

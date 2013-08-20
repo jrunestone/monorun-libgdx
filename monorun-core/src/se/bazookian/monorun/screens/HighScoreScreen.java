@@ -1,45 +1,33 @@
 package se.bazookian.monorun.screens;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import se.bazookian.monorun.GameState;
 import se.bazookian.monorun.Resources;
 import se.bazookian.monorun.ScreenManager;
+import se.bazookian.monorun.services.ScoreService;
+import se.bazookian.monorun.services.ScoreService.HighScore;
+import se.bazookian.monorun.services.ScoreService.ScoreListener;
 import se.bazookian.monorun.ui.ActionButton;
 import se.bazookian.monorun.ui.ChangeScreenAction;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.HttpParametersUtils;
-import com.badlogic.gdx.Net.HttpMethods;
-import com.badlogic.gdx.Net.HttpRequest;
-import com.badlogic.gdx.Net.HttpResponse;
-import com.badlogic.gdx.Net.HttpResponseListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonReader;
 
-public class HighScoreScreen extends GameScreen implements HttpResponseListener {
+public class HighScoreScreen extends GameScreen implements ScoreListener {
 	private static final Color BACKGROUND_COLOR = new Color(1, 1, 1, 1);
-	private static final String HIGHSCORE_API_URL = "http://monorun.com/api/api.php";
 	
+	private ScoreService service;
 	private Table table;
 	private Label loadingLabel;
-	private int score;
 	
-	public static class HighScore {
-		public int id;
-		public String username;
-		public long dateline;
-		public int score;
-		public int position;
-	}
+	private String username;
+	private int score;
 	
 	public HighScoreScreen(ScreenManager screenManager, AssetManager assetManager) {
 		super(screenManager, assetManager, true, BACKGROUND_COLOR);
@@ -50,13 +38,19 @@ public class HighScoreScreen extends GameScreen implements HttpResponseListener 
 	public void show() {
 		super.show();
 		
-		getHighScore();
+		service = new ScoreService(this);
+		service.endSession(username, score);
+		
 		createLayout();
 	}
 	
 	@Override
 	public void hide() {
 		stage.clear();
+	}
+	
+	public void setUsername(String name) {
+		username = name;
 	}
 	
 	public void setScore(int score) {
@@ -72,7 +66,7 @@ public class HighScoreScreen extends GameScreen implements HttpResponseListener 
 		Label heading = new Label("high score!", skin, "heading");
 		heading.setAlignment(Align.center);
 		
-		loadingLabel = new Label("loading scores...", skin);
+		loadingLabel = new Label("loading...", skin);
 		loadingLabel.setAlignment(Align.center);
 		
 		table.add(heading).spaceBottom(30).colspan(3);
@@ -95,7 +89,18 @@ public class HighScoreScreen extends GameScreen implements HttpResponseListener 
 		table.row();
 		
 		ActionButton retryButton = new ActionButton("stay positive!", skin, new ChangeScreenAction(getScreenManager(), GameState.GAMEPLAY));
-		table.add(retryButton).colspan(3);
+		table.add(retryButton).spaceBottom(30).colspan(3);
+		table.row();
+		
+		Image divider = new Image(skin, "divider");
+		table.add(divider).spaceBottom(30).colspan(3);
+		table.row();
+		
+		Label authorInfo = new Label("https://github.com/beije/monorun\nhttps://github.com/swemaniac/monorun-libgdx", skin, "small");
+		authorInfo.setAlignment(Align.center);
+		authorInfo.setWrap(true);
+		
+		table.add(authorInfo).width(400).colspan(3);
 	}
 	
 	private void createScoreLayout(ArrayList<HighScore> scores) {
@@ -134,51 +139,52 @@ public class HighScoreScreen extends GameScreen implements HttpResponseListener 
 			
 			table.row().spaceTop(5);
 		}
+		
+		createBottomLayout();
 	}
 	
 	private void createFailLayout() {
 		Skin skin = getAssetManager().get(Resources.UI_SKIN, Skin.class);
 		
-		Label error = new Label("can't fetch scores at this time.", skin);
+		Label error = new Label("Sorry, can't fetch scores at this time.", skin, "error");
 		error.setAlignment(Align.center);
 		
 		table.removeActor(loadingLabel);
 		table.add(error).colspan(3);
 		table.row();
+		
+		createBottomLayout();
 	}
 	
-	private void getHighScore() {
-		HttpRequest request = new HttpRequest(HttpMethods.POST);
-		HashMap<String, String> args = new HashMap<String, String>();
-		
-		args.put("do", "get");
-		
-		request.setUrl(HIGHSCORE_API_URL);
-		request.setContent(HttpParametersUtils.convertHttpParameters(args));
-		
-		Gdx.net.sendHttpRequest(request, this);
+	@Override
+	public void scoresReceived(ArrayList<HighScore> scores) {
+		createScoreLayout(scores);
 	}
 
 	@Override
-	public void handleHttpResponse(HttpResponse response) {
-		String json = response.getResultAsString();
-		JsonReader reader = new JsonReader();
-		Json parser = new Json();
-		Array<Object> items = (Array<Object>)reader.parse(json);
-		ArrayList<HighScore> scores = new ArrayList<HighScore>();
-		
-		for (Object i : items) {
-			HighScore item = parser.readValue(HighScore.class, i);
-			scores.add(item);
-		}
-		
-		createScoreLayout(scores);
-		createBottomLayout();
-	}
-	
-	@Override
-	public void failed(Throwable error) {
+	public void fetchScoresFailure(Throwable error) {
 		createFailLayout();
-		createBottomLayout();
+	}
+
+	@Override
+	public void sessionStarted() {
+	
+	}
+
+
+	@Override
+	public void startSessionFailure(Throwable error) {
+		
+	}
+
+	@Override
+	public void sessionEnded() {
+		service.fetchHighScores();
+	}
+
+
+	@Override
+	public void endSessionFailure(Throwable error) {
+		createFailLayout();
 	}
 }
