@@ -9,6 +9,7 @@ import se.bazookian.monorun.components.Sprite;
 
 import com.artemis.Entity;
 import com.artemis.World;
+import com.badlogic.gdx.Gdx;
 
 public class Player {
 	public static final String TAG_NAME = "player";
@@ -19,7 +20,7 @@ public class Player {
 		
 		player.addComponent(new se.bazookian.monorun.components.Player());
 		player.addComponent(new Sprite(SPRITE_NAME));
-		player.addComponent(new Position(Monorun.WIDTH / 2, Monorun.HEIGHT / 2));
+		player.addComponent(new Position(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2));
 		player.addComponent(new Bounds(36));
 		player.addComponent(new IdleTimer());
 		player.addComponent(new Health());

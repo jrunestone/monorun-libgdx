@@ -7,15 +7,13 @@ import se.bazookian.monorun.screens.StartScreen;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Monorun extends Game implements ApplicationListener {
-	public static final int WIDTH = 1024;
-	public static final int HEIGHT = 768;
-	
 	private AssetManager assetManager;
 	private ScreenManager screenManager;
 	

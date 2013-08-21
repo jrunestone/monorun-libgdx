@@ -12,8 +12,8 @@ public class Main {
 		
 		cfg.title = "Monorun!";
 		cfg.useGL20 = true;
-		cfg.width = Monorun.WIDTH;
-		cfg.height = Monorun.HEIGHT;
+		cfg.width = 800;
+		cfg.height = 600;
 		
 		new LwjglApplication(new Monorun(), cfg);
 	}

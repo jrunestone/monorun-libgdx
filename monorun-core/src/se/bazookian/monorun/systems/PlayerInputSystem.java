@@ -47,8 +47,8 @@ public class PlayerInputSystem extends EntityProcessingSystem implements InputPr
 		idleTimer.update();
 		
 		if (isDragging) {
-			position.x = MathUtils.clamp(dragX, 0, Monorun.WIDTH);
-			position.y = MathUtils.clamp(dragY, 0, Monorun.HEIGHT);
+			position.x = MathUtils.clamp(dragX, 0, Gdx.graphics.getWidth());
+			position.y = MathUtils.clamp(dragY, 0, Gdx.graphics.getHeight());
 		}
 	}
 
@@ -83,7 +83,7 @@ public class PlayerInputSystem extends EntityProcessingSystem implements InputPr
 		isDragging = true;
 		
 		dragX = screenX;
-		dragY = Monorun.HEIGHT - screenY;
+		dragY = Gdx.graphics.getHeight() - screenY;
 		
 		return false;
 	}
