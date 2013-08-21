@@ -15,17 +15,15 @@ Download the above libraries and place the relevant files like below to resolve 
 ###monorun-android/libs
 * armeabi (libgdx)
 * armeabi-v7a (libgdx)
-* gdx-backend-android.jar (libgdx)
  
 ###monorun-core/libs
 * gdx.jar (libgdx)
-* artemis.jar (artemis)
-
-###monorun-desktop/libs
+* gdx-backend-android.jar (libgdx)
 * gdx-backend-lwjgl-natives.jar (libgdx)
 * gdx-backend-lwjgl.jar (libgdx)
 * gdx-natives.jar (libgdx)
 * gdx-tools.jar (libgdx/extensions/gdx-tools)
+* artemis.jar (artemis)
 
 Building/running
 ----------------
