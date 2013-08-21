@@ -39,6 +39,14 @@ public class StartScreen extends GameScreen {
 	}
 	
 	@Override
+	public void hide() {
+		super.hide();
+		
+		stage.clear();
+		assetsLoaded = false;
+	}
+	
+	@Override
 	public void render(float delta) {
 		super.render(delta);
 		
@@ -92,7 +100,7 @@ public class StartScreen extends GameScreen {
 		table.row();
 		table.add(divider).spaceBottom(30);
 		table.row();
-		table.add(authorInfo).width(400).spaceBottom(30);
+		table.add(authorInfo).width(400);
 		
 		getStage().addActor(table);
 	}

@@ -10,7 +10,8 @@
 		black: { a: 1, b: 0, g: 0, r: 0 },
 		white: { a: 1, b: 1, g: 1, r: 1 },
 		text-color: { a: 1, b: 0.23, g: 0.21, r: 0.16 },
-		heading-color:{ a: 1, b: 0.86, g: 0.77, r: 0.34 } 
+		heading-color:{ a: 1, b: 0.86, g: 0.77, r: 0.34 }, 
+		error-color: { a: 1, b: 0, g: 0, r: 1 }
 	},
 	
 	com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
@@ -32,6 +33,11 @@
 		table-heading: {
 			font: default-font-bold,
 			fontColor: text-color
+		},
+		
+		error: {
+			font: default-font,
+			fontColor: error-color
 		}
 	},
 	
