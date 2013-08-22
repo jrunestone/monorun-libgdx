@@ -85,7 +85,7 @@ public class HighScoreScreen extends GameScreen implements ScoreListener {
 		text.setWrap(true);
 		text.setAlignment(Align.center);
 		
-		table.add(text).width(400).spaceTop(30).spaceBottom(30).colspan(3);
+		table.add(text).width(300).spaceTop(30).spaceBottom(30).colspan(3);
 		table.row();
 		
 		ActionButton retryButton = new ActionButton("stay positive!", skin, new ChangeScreenAction(getScreenManager(), GameState.START));
@@ -100,7 +100,7 @@ public class HighScoreScreen extends GameScreen implements ScoreListener {
 		authorInfo.setAlignment(Align.center);
 		authorInfo.setWrap(true);
 		
-		table.add(authorInfo).width(400).colspan(3);
+		table.add(authorInfo).width(300).colspan(3);
 	}
 	
 	private void createScoreLayout(ArrayList<HighScore> scores) {
@@ -116,9 +116,9 @@ public class HighScoreScreen extends GameScreen implements ScoreListener {
 		hoursHeading.setAlignment(Align.right);
 				
 		table.removeActor(loadingLabel);
-		table.add(rankHeading).width(125);
-		table.add(nameHeading).width(167);
-		table.add(hoursHeading).width(125);
+		table.add(rankHeading).width(80);
+		table.add(nameHeading).width(110);
+		table.add(hoursHeading).width(80);
 		table.row();
 		
 		for (int i = 0; i < scores.size(); i++) {
@@ -133,9 +133,9 @@ public class HighScoreScreen extends GameScreen implements ScoreListener {
 			Label hours = new Label("" + Math.round(score.score / 1000.0f), skin);
 			hours.setAlignment(Align.right);
 			
-			table.add(rank).width(125);
-			table.add(name).width(167);
-			table.add(hours).width(125);
+			table.add(rank).width(80);
+			table.add(name).width(110);
+			table.add(hours).width(80);
 			
 			table.row().spaceTop(5);
 		}

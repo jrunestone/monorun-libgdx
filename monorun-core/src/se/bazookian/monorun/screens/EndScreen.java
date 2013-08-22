@@ -78,9 +78,9 @@ public class EndScreen extends GameScreen {
 		
 		table.add(heading).spaceBottom(30).colspan(2);
 		table.row();
-		table.add(text1).width(400).spaceBottom(30).colspan(2);
+		table.add(text1).width(300).spaceBottom(30).colspan(2);
 		table.row();
-		table.add(text2).width(400).spaceBottom(30).colspan(2);
+		table.add(text2).width(300).spaceBottom(30).colspan(2);
 		table.row();
 		
 		Table textFieldWrapper = new Table(skin);

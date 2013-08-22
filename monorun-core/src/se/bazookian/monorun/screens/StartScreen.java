@@ -94,13 +94,13 @@ public class StartScreen extends GameScreen {
 		
 		table.add(logo).spaceBottom(30);
 		table.row();
-		table.add(tagLine).width(400).spaceBottom(30);
+		table.add(tagLine).width(300).spaceBottom(30);
 		table.row();
 		table.add(startButton).spaceBottom(30);
 		table.row();
 		table.add(divider).spaceBottom(30);
 		table.row();
-		table.add(authorInfo).width(400);
+		table.add(authorInfo).width(300);
 		
 		getStage().addActor(table);
 	}
