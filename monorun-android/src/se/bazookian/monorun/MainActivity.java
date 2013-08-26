@@ -1,6 +1,7 @@
 package se.bazookian.monorun;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
@@ -13,6 +14,9 @@ public class MainActivity extends AndroidApplication {
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
         cfg.useGL20 = false;
         
-        initialize(new Monorun(), cfg);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        
+        initialize(new Monorun(metrics.density), cfg);
     }
 }

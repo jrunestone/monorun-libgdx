@@ -1,7 +1,9 @@
 package se.bazookian.monorun.screens;
 
+import se.bazookian.monorun.Monorun;
 import se.bazookian.monorun.ScreenManager;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
@@ -53,7 +55,7 @@ public abstract class GameScreen implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		if (stage != null) {
-			stage.setViewport(width, height, true);
+			stage.setViewport(width / Monorun.DISPLAY_DENSITY, height / Monorun.DISPLAY_DENSITY, true);
 		}
 	}
 

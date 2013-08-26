@@ -12,6 +12,7 @@ import com.artemis.annotations.Mapper;
 import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.Utils;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 
 public class AutonomousMovementSystem extends EntityProcessingSystem {
@@ -41,7 +42,7 @@ public class AutonomousMovementSystem extends EntityProcessingSystem {
 	
 	private void resetMovement(Position currentPosition, AutonomousMovement movement) {
 		movement.previous = new Position(currentPosition.x, currentPosition.y);
-		movement.next = new Position(MathUtils.random(0.0f, Monorun.WIDTH), MathUtils.random(0.0f, Monorun.HEIGHT)); 
+		movement.next = new Position(MathUtils.random(0.0f, Gdx.graphics.getWidth()), MathUtils.random(0.0f, Gdx.graphics.getHeight())); 
 		movement.speed = MathUtils.random(2.0f, 5.0f);
 		movement.elapsed = 0;
 		
