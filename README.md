@@ -25,6 +25,8 @@ Download the above libraries and place the relevant files like below to resolve 
 * gdx-tools.jar (libgdx/extensions/gdx-tools)
 * artemis.jar (artemis)
 
+Also make sure to go to **Properties -> Java Build Path -> Order and Export** for each project and check the box next to each imported jar file. Also check the box next to **Android Private Libraries** in the Android project.
+
 Building/running
 ----------------
 1. Open Eclipse and import all projects as "Existing projects into workspace".
